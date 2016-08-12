@@ -9,8 +9,11 @@ var ResponsiveImage = React.createClass({
     render: function () {
         var width = Math.ceil(this.props.initWidth * Device.scale);
         var height = Math.ceil(this.props.initHeight * Device.scale);
+
+        var radius = width/2;
+
         return (
-            <Image style={[{width: width, height: height}, this.props.style]}
+            <Image style={ this.props.circle ? [{width: width, height: height, borderRadius: radius}, this.props.style] : [{width: width, height: height}, this.props.style]}
                    source={this.props.source}
                    ref={component => this._root = component}>
                 {this.props.children}
